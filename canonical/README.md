@@ -39,6 +39,13 @@ Omni-MATH 的 4,428 个父数据行均被保留：4,409 行进入评测文件，
 | `verification_error` | 1 | Math-Verify 触发 `PrecisionExhausted` |
 | `multiple_boxed_answers` | 1 | 单个 gold 含多个 boxed 函数族 |
 
+## 2026-07-16 变更说明
+
+- Omni-MATH source line 248 的 `answer` 被截断且漏掉 solution 中另外两组集合，标记为 `truncated_answer`。
+- source line 4058 的 direct `answer` 末尾有孤立反斜杠，标记为 `malformed_latex`。
+- 两条原始 source 行完整保存在 `issues.jsonl`，未修改父数据，也未使用人工猜测补全。
+- 旧 v3 自验证会在 box 扫描失败后 fallback 全文，再把 gold 与自身抽取结果比较，因此没有暴露这两条数据质量问题；本次结合 strict 全量检查与 source/solution 审计将其隔离。
+
 ## 重建
 
 `build.py` 是数据物化脚本，不参与模型生成或判分。它从固定父文件重建全部 canonical JSONL，检查行数、ID 唯一性和必需字段，并将父文件与输出文件的 SHA256 写入 `manifest.json`。

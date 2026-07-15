@@ -26,11 +26,12 @@ SPECS = {
     "hmmt_feb_2025/train.jsonl": ("source/hmmt_feb_2025/train.jsonl", 30, "MathArena/hmmt_feb_2025", "problem_idx", "problem", "direct"),
     "math_500/test.jsonl": ("source/math_500/test.jsonl", 500, "HuggingFaceH4/MATH-500", "unique_id", "problem", "direct"),
     "minerva_math/train.jsonl": ("source/minerva_math/train.jsonl", 272, "knoveleng/Minerva-Math", "idx", "problem", "minerva"),
-    "omni_math/train.jsonl": ("source/omni_math/train.jsonl", 4_411, "KbsdJames/Omni-MATH", None, "problem", "omni"),
+    "omni_math/train.jsonl": ("source/omni_math/train.jsonl", 4_409, "KbsdJames/Omni-MATH", None, "problem", "omni"),
     "olympiad_bench/train.jsonl": ("source/olympiad_bench/train.jsonl", 674, "Hothan/OlympiadBench:OE_TO_maths_en_COMP", "id", "question", "olympiad"),
 }
 
 OMNI_MATH_ISSUES = {
+    248: "truncated_answer",
     446: "malformed_latex",
     906: "malformed_latex",
     1077: "malformed_latex",
@@ -38,6 +39,7 @@ OMNI_MATH_ISSUES = {
     1759: "verification_error",
     2408: "malformed_latex",
     2429: "malformed_latex",
+    4058: "malformed_latex",
     4108: "multiple_boxed_answers",
     4147: "empty_answer",
     4161: "empty_answer",
@@ -208,7 +210,11 @@ def build() -> None:
                     "source": upstream,
                     "parent_path": parent_name,
                     "parent_sha256": hashlib.sha256(parent.read_bytes()).hexdigest(),
-                    "audit": {"parser_id": "math-v3", "math_verify": "0.9.0"},
+                    "audit": {
+                        "parser_id": "math-v5-dual",
+                        "parser_config_hash": "5572656009a203c55ae0bb9fe6544a59f15f2712586a378a224a9d2801e15e33",
+                        "math_verify": "0.9.0",
+                    },
                 }
             )
             print(f"wrote {len(issues):,} issue rows to {issue_output}")

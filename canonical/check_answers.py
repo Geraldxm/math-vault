@@ -12,10 +12,47 @@ from pathlib import Path
 def main() -> int:
     arguments = argparse.ArgumentParser()
     arguments.add_argument("math_eval", type=Path)
+    arguments.add_argument(
+        "--parser-id",
+        choices=("math-v3", "math-v4-dual", "math-v5-dual"),
+        default="math-v5-dual",
+    )
     args = arguments.parse_args()
     sys.path.insert(0, str(args.math_eval.resolve() / "scripts"))
 
-    from parser import MATH_VERIFY_VERSION, PARSER_ID, parse_and_verify
+    from parser import (
+        DUAL_PARSER_CONFIG_HASH,
+        DUAL_PARSER_ID,
+        MATH_VERIFY_VERSION,
+        PARSER_CONFIG_HASH,
+        PARSER_ID,
+        V5_DUAL_PARSER_CONFIG_HASH,
+        V5_DUAL_PARSER_ID,
+        parse_and_verify,
+        parse_dual_and_verify,
+        parse_v5_dual_and_verify,
+    )
+
+    parser_config_hash = {
+        PARSER_ID: PARSER_CONFIG_HASH,
+        DUAL_PARSER_ID: DUAL_PARSER_CONFIG_HASH,
+        V5_DUAL_PARSER_ID: V5_DUAL_PARSER_CONFIG_HASH,
+    }[args.parser_id]
+
+    def check(answer: str) -> tuple[bool, str, str | None]:
+        final_text = r"\boxed{" + answer + "}"
+        if args.parser_id == PARSER_ID:
+            result = parse_and_verify(final_text, answer)
+            return result.is_correct, result.status, result.error
+        parser = (
+            parse_v5_dual_and_verify
+            if args.parser_id == V5_DUAL_PARSER_ID
+            else parse_dual_and_verify
+        )
+        result = parser(final_text, answer)
+        if result.strict != result.soft:
+            return False, "strict_soft_mismatch", None
+        return result.strict.is_correct, result.strict.status, result.strict.error
 
     here = Path(__file__).resolve().parent
     manifest = json.loads((here / "manifest.json").read_text(encoding="utf-8"))
@@ -43,16 +80,14 @@ def main() -> int:
             for line_number, line in enumerate(source, 1):
                 answer = str(json.loads(line)["answer"])
                 try:
-                    result = parse_and_verify(r"\boxed{" + answer + "}", answer)
+                    is_correct, status, error = check(answer)
                 except Exception as exc:
                     failed.append(
                         f"{path}:{line_number}: {type(exc).__name__}: {exc}"
                     )
                 else:
-                    if not result.is_correct:
-                        failed.append(
-                            f"{path}:{line_number}: {result.status}: {result.error}"
-                        )
+                    if not is_correct:
+                        failed.append(f"{path}:{line_number}: {status}: {error}")
                 rows += 1
         if rows != dataset["rows"]:
             failed.append(f"{path}: expected {dataset['rows']} rows, found {rows}")
@@ -62,7 +97,8 @@ def main() -> int:
     print(
         json.dumps(
             {
-                "parser_id": PARSER_ID,
+                "parser_id": args.parser_id,
+                "parser_config_hash": parser_config_hash,
                 "math_verify": MATH_VERIFY_VERSION,
                 "checked": checked,
                 "failed": len(failed),

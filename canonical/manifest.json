@@ -115,8 +115,8 @@
     },
     {
       "path": "omni_math/train.jsonl",
-      "rows": 4411,
-      "sha256": "4758c973e7497486984c60af847b6b616c849911c58534680328d7f5143e5417",
+      "rows": 4409,
+      "sha256": "3ae4ffc7aaf8b4ea9fc89534309f9393270574a8906415869df904732fc4d898",
       "source": "KbsdJames/Omni-MATH",
       "parent_path": "source/omni_math/train.jsonl",
       "parent_sha256": "7c87be8ee41ac7c7a597ef5a5500e84bd2b639a85a06db3da7f69bf9a32ef168"
@@ -133,13 +133,14 @@
   "issues": [
     {
       "path": "omni_math/issues.jsonl",
-      "rows": 17,
-      "sha256": "41dc14f6a2f61b7b2d51d59d2664343f0646f57e55616dce7e7de0e72931060a",
+      "rows": 19,
+      "sha256": "1304e7b5938d6ca07b616aa6ffd7446e1342ad4b04a0208809293517cba78cfb",
       "source": "KbsdJames/Omni-MATH",
       "parent_path": "source/omni_math/train.jsonl",
       "parent_sha256": "7c87be8ee41ac7c7a597ef5a5500e84bd2b639a85a06db3da7f69bf9a32ef168",
       "audit": {
-        "parser_id": "math-v3",
+        "parser_id": "math-v5-dual",
+        "parser_config_hash": "5572656009a203c55ae0bb9fe6544a59f15f2712586a378a224a9d2801e15e33",
         "math_verify": "0.9.0"
       }
     }

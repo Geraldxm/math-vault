@@ -25,15 +25,16 @@
 | HMMT February 2025 | `hmmt_feb_2025/train.jsonl` | 30 | 字段映射 |
 | MATH-500 | `math_500/test.jsonl` | 500 | 字段映射 |
 | Minerva-Math | `minerva_math/train.jsonl` | 272 | 提取 solution 中最后一个完整 box |
-| Omni-MATH | `omni_math/train.jsonl` | 4,411 | 17 个问题行转存至 `omni_math/issues.jsonl` |
+| Omni-MATH | `omni_math/train.jsonl` | 4,409 | 19 个问题行转存至 `omni_math/issues.jsonl` |
 | OlympiadBench `OE_TO_maths_en_COMP` | `olympiad_bench/train.jsonl` | 674 | 提取唯一 `final_answer` |
 
-Omni-MATH 的 4,428 个父数据行均被保留：4,411 行进入评测文件，17 行进入审计文件。
+Omni-MATH 的 4,428 个父数据行均被保留：4,409 行进入评测文件，19 行进入审计文件。
 
 | issue | 行数 | 含义 |
 |---|---:|---|
 | `empty_answer` | 9 | answer 为空 |
-| `malformed_latex` | 5 | LaTeX 括号不完整 |
+| `malformed_latex` | 6 | LaTeX 括号不完整 |
+| `truncated_answer` | 1 | answer 截断且语义不完整 |
 | `piecewise_text` | 1 | 当前 parser 不支持该分段文本格式 |
 | `verification_error` | 1 | Math-Verify 触发 `PrecisionExhausted` |
 | `multiple_boxed_answers` | 1 | 单个 gold 含多个 boxed 函数族 |
@@ -51,7 +52,8 @@ python canonical/build.py
 `check_answers.py` 先核对 manifest checksum，再使用 math-eval 当前 parser 检查每个 gold。
 
 ```bash
-/path/to/math-eval/.venv/bin/python canonical/check_answers.py /path/to/math-eval
+/path/to/math-eval/.venv/bin/python canonical/check_answers.py \
+  /path/to/math-eval --parser-id math-v5-dual
 ```
 
-审计基线（2026-07-15）：math-eval `math-v3`、Math-Verify 0.9.0，32,228 / 32,228 个评测答案通过，失败数为 0。
+审计基线（2026-07-16）：math-eval `math-v5-dual`、Math-Verify 0.9.0，32,226 / 32,226 个评测答案的 boxed strict / soft verdict 通过且一致，失败数为 0。

@@ -1,0 +1,147 @@
+{
+  "schema": "math-eval-canonical-v1",
+  "datasets": [
+    {
+      "path": "aime_2024/train.jsonl",
+      "rows": 30,
+      "sha256": "decfafc9fc3e161ac18f77bed83bdd27520f378e3eeccb6a2db0de761804b63b",
+      "source": "HuggingFaceH4/aime_2024",
+      "parent_path": "source/aime_2024/train.jsonl",
+      "parent_sha256": "66675268a74beba516b24e94426906b8730c38c3409f58ff683d252cf5aa2ce7"
+    },
+    {
+      "path": "aime_2025/train.jsonl",
+      "rows": 30,
+      "sha256": "ae72e19fcf670d7fb89862369a28160103a976b1cb88cb8611e7a5b84e03dc83",
+      "source": "MathArena/aime_2025",
+      "parent_path": "source/aime_2025/train.jsonl",
+      "parent_sha256": "15a0cdfb6ad94ccca14604702fc26126c92ec73ac4125d85e692fa16637b9359"
+    },
+    {
+      "path": "aime_2026/train.jsonl",
+      "rows": 30,
+      "sha256": "c04d04e64dd16bc6f714b7451d67404a3185f817ec4b158637ec4128d8b55451",
+      "source": "MathArena/aime_2026",
+      "parent_path": "source/aime_2026/train.jsonl",
+      "parent_sha256": "3c03a0a42d8f844a099f78a5ae636b8f657dc07cd35c9ccb30846aa5e9e21259"
+    },
+    {
+      "path": "aimo_validation_aime/train.jsonl",
+      "rows": 90,
+      "sha256": "901fdfaf9d558888e6ff8b8ea950066f5fbf90789822f7b54f72e5bb5929eec8",
+      "source": "AI-MO/aimo-validation-aime",
+      "parent_path": "source/aimo_validation_aime/train.jsonl",
+      "parent_sha256": "fa42838c9d643be2fa83671fb7960a31bae75d5fe73b902cca9f21cbf70607ee"
+    },
+    {
+      "path": "aimo_validation_amc/train.jsonl",
+      "rows": 83,
+      "sha256": "d1a20d5416aab474935ce4acb6b8e8bcce433c5e0e68d699f70dc8fb91165aec",
+      "source": "AI-MO/aimo-validation-amc",
+      "parent_path": "source/aimo_validation_amc/train.jsonl",
+      "parent_sha256": "ce1a63706f20e9d5c51cd369a5bb38fcba9d2fa914f4a63ed8270f0c3b5080a6"
+    },
+    {
+      "path": "amc_2023/test.jsonl",
+      "rows": 40,
+      "sha256": "bba75a3421023fe514dac72dfbacb9a3fd5ac04905ee2a02e7b354fe223df40e",
+      "source": "math-ai/amc23",
+      "parent_path": "source/amc_2023/test.jsonl",
+      "parent_sha256": "02ae54425741562778916b5fa8f6ff07749689cfcd7a53e65e1d88a89e5065f9"
+    },
+    {
+      "path": "brumo_2025/train.jsonl",
+      "rows": 30,
+      "sha256": "36fad5494e250793d8c6fd7772e7285a09c2d921098e502b875def8646662d40",
+      "source": "MathArena/brumo_2025",
+      "parent_path": "source/brumo_2025/train.jsonl",
+      "parent_sha256": "9d53e69d89918d24321f5ff8163547dccf8e40d75c3db8815d8326498260a32e"
+    },
+    {
+      "path": "cmimc_2025/train.jsonl",
+      "rows": 40,
+      "sha256": "1273bea7911e73af04e5729e3a9384e90793e089ba733b9ba2ff7d2a5359b5f5",
+      "source": "MathArena/cmimc_2025",
+      "parent_path": "source/cmimc_2025/train.jsonl",
+      "parent_sha256": "6f50851fc59f7c8109f3314ab1494e0138d89e4af0c70647f69a07093e50c1bf"
+    },
+    {
+      "path": "dapo_math_17k_dedup/train.jsonl",
+      "rows": 17176,
+      "sha256": "a5b1b192a7b7a076630f72b8ae3d1fe29b403007f8880e0e625ea6528e0b1ed8",
+      "source": "BytedTsinghua-SIA/DAPO-Math-17k",
+      "parent_path": "derived/dapo_math_17k_dedup/train.jsonl",
+      "parent_sha256": "7131540f334375c5fed33ac89b8728cdda851bde9ee95a755d74a33b201d8b25"
+    },
+    {
+      "path": "gsm8k/train.jsonl",
+      "rows": 7473,
+      "sha256": "52a1edaed55ea6465a5297cdac9888163b733ed2d670b715089f4a2ae9e64776",
+      "source": "openai/gsm8k",
+      "parent_path": "source/gsm8k/train.jsonl",
+      "parent_sha256": "0d52e684c6aba18d811188810b1264099e890882cdb460ba50e94367a3f8fd87"
+    },
+    {
+      "path": "gsm8k/test.jsonl",
+      "rows": 1319,
+      "sha256": "a8790b87e2769f2c1087912f496070da9266029303ded5cb2ad6d457a0ec87c7",
+      "source": "openai/gsm8k",
+      "parent_path": "source/gsm8k/test.jsonl",
+      "parent_sha256": "5f9c0d85d3174547c8960de1fd96c3e777d9a40298771eecd4b0eef9b2f6acd6"
+    },
+    {
+      "path": "hmmt_feb_2025/train.jsonl",
+      "rows": 30,
+      "sha256": "0eeb7dc616f1d3576d475533610d5835c952c42fdf159b591a6e31742e771620",
+      "source": "MathArena/hmmt_feb_2025",
+      "parent_path": "source/hmmt_feb_2025/train.jsonl",
+      "parent_sha256": "d6483ddf5a456d5a65c814868c576183688f53d8431308070cb4e9aa89af2914"
+    },
+    {
+      "path": "math_500/test.jsonl",
+      "rows": 500,
+      "sha256": "daff89dc72d4612f6f143bd8e575b81bebdc7ec7c4ee7cdb9a580273e2d0240b",
+      "source": "HuggingFaceH4/MATH-500",
+      "parent_path": "source/math_500/test.jsonl",
+      "parent_sha256": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132"
+    },
+    {
+      "path": "minerva_math/train.jsonl",
+      "rows": 272,
+      "sha256": "59f4a0fe4a3acc5be5567bb9bcec1f31018d307b45776ae74bf636c3a9129e9e",
+      "source": "knoveleng/Minerva-Math",
+      "parent_path": "source/minerva_math/train.jsonl",
+      "parent_sha256": "d78d04d5f80e73cd9970f3dc18079b4f7f95d2fb233d3f4b3f606a622a981dea"
+    },
+    {
+      "path": "omni_math/train.jsonl",
+      "rows": 4411,
+      "sha256": "4758c973e7497486984c60af847b6b616c849911c58534680328d7f5143e5417",
+      "source": "KbsdJames/Omni-MATH",
+      "parent_path": "source/omni_math/train.jsonl",
+      "parent_sha256": "7c87be8ee41ac7c7a597ef5a5500e84bd2b639a85a06db3da7f69bf9a32ef168"
+    },
+    {
+      "path": "olympiad_bench/train.jsonl",
+      "rows": 674,
+      "sha256": "06aeda213cd3c4964c702a8ed069f2d9de8046185b48b939264b881ad1e01eb2",
+      "source": "Hothan/OlympiadBench:OE_TO_maths_en_COMP",
+      "parent_path": "source/olympiad_bench/train.jsonl",
+      "parent_sha256": "8398e5c9c5fe5761ca8998f28d27519c15a6a9126c2a0cb68a27e5f963b5c923"
+    }
+  ],
+  "issues": [
+    {
+      "path": "omni_math/issues.jsonl",
+      "rows": 17,
+      "sha256": "41dc14f6a2f61b7b2d51d59d2664343f0646f57e55616dce7e7de0e72931060a",
+      "source": "KbsdJames/Omni-MATH",
+      "parent_path": "source/omni_math/train.jsonl",
+      "parent_sha256": "7c87be8ee41ac7c7a597ef5a5500e84bd2b639a85a06db3da7f69bf9a32ef168",
+      "audit": {
+        "parser_id": "math-v3",
+        "math_verify": "0.9.0"
+      }
+    }
+  ]
+}

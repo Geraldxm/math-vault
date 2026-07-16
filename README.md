@@ -25,7 +25,7 @@ Curated, traceable snapshots of public mathematical reasoning datasets.
 | DAPO-Math-17K compact | `derived/dapo_math_17k_compact/train.jsonl` | 17,917 | Apache-2.0 |
 | DAPO-Math-17K dedup | `derived/dapo_math_17k_dedup/train.jsonl` | 17,176 | Apache-2.0 |
 
-每个数据目录的 README 是该对象的详细 provenance；表中的 “未声明” 表示所引用的上游数据页没有给出许可证，不表示数据属于公有领域。
+每个数据目录的 README 是该对象的详细 provenance；表中的 "未声明" 表示所引用的上游数据页没有给出许可证，不表示数据属于公有领域。
 
 ## 目录约定
 
@@ -49,6 +49,18 @@ math-eval canonical 数据同样只依赖 Python 标准库：
 python canonical/build.py
 ```
 
-## 许可证与归属
+## 引用与许可证
+
+如果本仓库对你的研究有帮助，请引用 [`CITATION.cff`](CITATION.cff) 或直接复制以下 BibTeX：
+
+```bibtex
+@software{ge_math_vault_2026,
+  author  = {Ge, Xinmu},
+  title   = {math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets},
+  year    = {2026},
+  url     = {https://github.com/Geraldxm/math-vault},
+  license = {MIT}
+}
+```
 
 仓库中的整理代码和文档使用 [MIT License](LICENSE)。数据仍归各自上游作者或权利人所有，并遵循各数据目录所列的上游条款；本仓库的 MIT License 不对这些数据重新授权。使用或再分发数据前，请检查相应上游页面和许可证。

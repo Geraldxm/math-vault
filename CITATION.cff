@@ -1,7 +1,7 @@
 cff-version: 1.2.0
-message: "If you use this software or dataset collection, please cite it using the metadata below."
+message: "If you use this software, please cite it using the metadata below."
 title: "math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets"
-type: dataset
+type: software
 authors:
   - family-names: Ge
     given-names: Xinmu

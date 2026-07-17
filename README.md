@@ -64,6 +64,7 @@ python canonical/build.py
   author  = {Ge, Xinmu},
   title   = {math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets},
   year    = {2026},
+  doi     = {10.5281/zenodo.21411213},
   url     = {https://github.com/Geraldxm/math-vault},
   license = {MIT}
 }

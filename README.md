@@ -2,6 +2,8 @@
 
 Curated, traceable snapshots of public mathematical reasoning datasets.
 
+不同于 awesome-AI-Math-Datasets 等索引列表，math-vault 直接保存数据文件，并将所有数据集统一为 `id/problem/answer` canonical JSONL 格式。每个数据目录记录完整的 provenance（上游来源、许可证、转换规则），可直接对接 [math-eval](https://github.com/Geraldxm/math-eval) 做统一评测。
+
 ## 数据目录
 
 | 数据 | 本地文件 | 行数 | 上游声明许可证 |

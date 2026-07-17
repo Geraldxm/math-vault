@@ -1,6 +1,7 @@
 # math-vault
 
 [![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21411214.svg)](https://doi.org/10.5281/zenodo.21411214)
 [![datasets](https://img.shields.io/badge/datasets-14-blue)]()
 
 Curated, traceable snapshots of public mathematical reasoning datasets. All datasets normalized to `id/problem/answer` canonical JSONL with per-source provenance records. Designed to feed [math-eval](https://github.com/Geraldxm/math-eval) directly.

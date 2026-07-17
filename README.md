@@ -1,12 +1,13 @@
 # math-vault
 
-Curated, traceable snapshots of public mathematical reasoning datasets.
+[![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![datasets](https://img.shields.io/badge/datasets-14-blue)]()
 
-不同于 awesome-AI-Math-Datasets 等索引列表，math-vault 直接保存数据文件，并将所有数据集统一为 `id/problem/answer` canonical JSONL 格式。每个数据目录记录完整的 provenance（上游来源、许可证、转换规则），可直接对接 [math-eval](https://github.com/Geraldxm/math-eval) 做统一评测。
+Curated, traceable snapshots of public mathematical reasoning datasets. All datasets normalized to `id/problem/answer` canonical JSONL with per-source provenance records. Designed to feed [math-eval](https://github.com/Geraldxm/math-eval) directly.
 
 ## 数据目录
 
-| 数据 | 本地文件 | 行数 | 上游声明许可证 |
+| 数据 | 本地文件 | 行数 | 上游许可证 |
 |---|---|---:|---|
 | AIME 2024 | `source/aime_2024/train.jsonl` | 30 | 未声明 |
 | AIME 2025 | `source/aime_2025/train.jsonl` | 30 | CC BY-NC-SA 4.0 |
@@ -23,37 +24,39 @@ Curated, traceable snapshots of public mathematical reasoning datasets.
 | Omni-MATH | `source/omni_math/train.jsonl` | 4,428 | Apache-2.0 |
 | OlympiadBench `OE_TO_maths_en_COMP` | `source/olympiad_bench/train.jsonl` | 674 | Apache-2.0 |
 | DAPO-Math-17K | `source/dapo_math_17k/README.md` | 上游入口 | Apache-2.0 |
-| math-eval canonical | `canonical/` | 32,228（另 17 个 issue 行） | 继承各父数据 |
+| math-eval canonical | `canonical/` | 32,228* | 继承各父数据 |
 | DAPO-Math-17K compact | `derived/dapo_math_17k_compact/train.jsonl` | 17,917 | Apache-2.0 |
 | DAPO-Math-17K dedup | `derived/dapo_math_17k_dedup/train.jsonl` | 17,176 | Apache-2.0 |
 
-每个数据目录的 README 是该对象的详细 provenance；表中的 "未声明" 表示所引用的上游数据页没有给出许可证，不表示数据属于公有领域。
+*含 17 个 issue 行。
+
+每个数据目录的 README 记录该对象的完整 provenance。"未声明" 表示上游未给出许可证，不代表公有领域。
 
 ## 目录约定
 
-- `source/`：上游公开 artifact 的快照。允许 parquet → JSONL 这类不改变行、字段、顺序和内容的序列化转换。
-- `derived/`：任何过滤、去重、去 prompt、冲突处理或采样后的版本。每个目录记录父数据、转换规则和重建脚本。
-- `canonical/`：由 source/derived 机械转换、可由 math-eval 直接读取并经当前 parser 全量检查的 `id/problem/answer` 版本。
+- `source/`：上游 artifact 快照。仅允许不改变行、字段、顺序和内容的序列化转换（如 parquet → JSONL）。
+- `derived/`：过滤、去重、去 prompt 或采样后的版本。每个目录记录父数据、转换规则和重建脚本。
+- `canonical/`：由 source/derived 机械转换、可直接被 math-eval 读取的 `id/problem/answer` 版本。
 
-仓库只保存 JSONL。论文仓库副本、实验子集、实验用 prompt template 和 run manifest 不属于本仓库范围。
+仓库只保存 JSONL。
 
-## 重建数据
+## 重建
 
-DAPO dedup 版本只依赖 Python 标准库：
+DAPO dedup：
 
 ```bash
 python derived/dapo_math_17k_dedup/build.py
 ```
 
-math-eval canonical 数据同样只依赖 Python 标准库：
+math-eval canonical：
 
 ```bash
 python canonical/build.py
 ```
 
-## 引用与许可证
+均只依赖 Python 标准库。
 
-如果本仓库对你的研究有帮助，请引用 [`CITATION.cff`](CITATION.cff) 或直接复制以下 BibTeX：
+## 引用
 
 ```bibtex
 @software{ge_math_vault_2026,
@@ -65,4 +68,4 @@ python canonical/build.py
 }
 ```
 
-仓库中的整理代码和文档使用 [MIT License](LICENSE)。数据仍归各自上游作者或权利人所有，并遵循各数据目录所列的上游条款；本仓库的 MIT License 不对这些数据重新授权。使用或再分发数据前，请检查相应上游页面和许可证。
+代码与文档使用 [MIT License](LICENSE)。数据归各自上游权利人所有，遵循各数据目录所列的上游条款；本仓库的 MIT License 不对数据重新授权。

@@ -1,12 +1,15 @@
 # math-vault
 
-[![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Code and docs: MIT](https://img.shields.io/badge/code%20%26%20docs-MIT-green)](LICENSE)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21411213.svg)](https://doi.org/10.5281/zenodo.21411213)
-[![datasets](https://img.shields.io/badge/datasets-14-blue)]()
 
 Curated, traceable snapshots of public mathematical reasoning datasets. All datasets normalized to `id/problem/answer` canonical JSONL with per-source provenance records. Designed to feed [math-eval](https://github.com/Geraldxm/math-eval) directly.
 
-## 数据目录
+这是一个持续维护、可扩展的数据仓库：下表描述当前快照；后续版本可以继续纳入新的数学数据集，并沿用同一套 provenance、canonical schema 和 parser audit 流程。
+
+## 当前数据快照
+
+Zenodo `v0.1.0` 冻结版包含 15 个 evaluation subsets、32,226 条 parser-valid evaluation rows；另有 19 条 Omni-MATH 记录隔离在 `canonical/omni_math/issues.jsonl` 供审计，不进入评测。
 
 | 数据 | 本地文件 | 行数 | 上游许可证 |
 |---|---|---:|---|
@@ -25,11 +28,9 @@ Curated, traceable snapshots of public mathematical reasoning datasets. All data
 | Omni-MATH | `source/omni_math/train.jsonl` | 4,428 | Apache-2.0 |
 | OlympiadBench `OE_TO_maths_en_COMP` | `source/olympiad_bench/train.jsonl` | 674 | Apache-2.0 |
 | DAPO-Math-17K | `source/dapo_math_17k/README.md` | 上游入口 | Apache-2.0 |
-| math-eval canonical | `canonical/` | 32,228* | 继承各父数据 |
+| math-eval canonical | `canonical/` | 32,226 | 继承各父数据 |
 | DAPO-Math-17K compact | `derived/dapo_math_17k_compact/train.jsonl` | 17,917 | Apache-2.0 |
 | DAPO-Math-17K dedup | `derived/dapo_math_17k_dedup/train.jsonl` | 17,176 | Apache-2.0 |
-
-*含 17 个 issue 行。
 
 每个数据目录的 README 记录该对象的完整 provenance。"未声明" 表示上游未给出许可证，不代表公有领域。
 
@@ -60,13 +61,13 @@ python canonical/build.py
 ## 引用
 
 ```bibtex
-@software{ge_math_vault_2026,
+@dataset{ge_math_vault_2026,
   author  = {Ge, Xinmu},
   title   = {math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets},
   year    = {2026},
-  doi     = {10.5281/zenodo.21411213},
-  url     = {https://github.com/Geraldxm/math-vault},
-  license = {MIT}
+  version = {v0.1.0},
+  doi     = {10.5281/zenodo.21411214},
+  url     = {https://doi.org/10.5281/zenodo.21411214}
 }
 ```
 

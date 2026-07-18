@@ -1,12 +1,13 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it using the metadata below."
+message: "If you use this dataset, please cite it using the metadata below."
 title: "math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets"
-type: software
+type: dataset
 authors:
   - family-names: Ge
     given-names: Xinmu
     affiliation: "Shanghai Jiao Tong University; Shanghai Innovation Institute"
 repository-code: "https://github.com/Geraldxm/math-vault"
 url: "https://github.com/Geraldxm/math-vault"
-doi: 10.5281/zenodo.21411213
-license: MIT
+version: "v0.1.0"
+date-released: 2026-07-17
+doi: 10.5281/zenodo.21411214

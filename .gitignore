@@ -4,4 +4,3 @@
 __pycache__/
 *.py[cod]
 *.parquet
-!repo/opd_dapo_math_17k_dedup/train.parquet

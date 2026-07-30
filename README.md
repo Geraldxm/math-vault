@@ -31,7 +31,6 @@ Zenodo `v0.1.0` 冻结版包含 15 个 evaluation subsets、32,226 条 parser-va
 | math-eval canonical | `canonical/` | 32,226 | 继承各父数据 |
 | DAPO-Math-17K compact | `derived/dapo_math_17k_compact/train.jsonl` | 17,917 | Apache-2.0 |
 | DAPO-Math-17K dedup | `derived/dapo_math_17k_dedup/train.jsonl` | 17,176 | Apache-2.0 |
-| OPD DAPO-Math-17K dedup | `repo/opd_dapo_math_17k_dedup/train.parquet` | 17,176 | Apache-2.0 |
 
 每个数据目录的 README 记录该对象的完整 provenance。"未声明" 表示上游未给出许可证，不代表公有领域。
 
@@ -40,9 +39,8 @@ Zenodo `v0.1.0` 冻结版包含 15 个 evaluation subsets、32,226 条 parser-va
 - `source/`：上游 artifact 快照。仅允许不改变行、字段、顺序和内容的序列化转换（如 parquet → JSONL）。
 - `derived/`：过滤、去重、去 prompt 或采样后的版本。每个目录记录父数据、转换规则和重建脚本。
 - `canonical/`：由 source/derived 机械转换、可直接被 math-eval 读取的 `id/problem/answer` 版本。
-- `repo/`：绑定具体代码仓库、checkpoint 或训练 setting 的数据适配，例如特定 prompt 和训练框架 schema；不得作为 source/derived/canonical 的父数据。
 
-source/derived/canonical 只保存 JSONL。repo 可保存带完整 provenance 和重建脚本的训练格式；论文仓库副本、临时实验子集和 run manifest 仍不属于本仓库范围。
+仓库只保存 JSONL。
 
 ## 重建
 

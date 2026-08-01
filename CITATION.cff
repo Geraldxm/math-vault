@@ -5,7 +5,7 @@ type: dataset
 authors:
   - family-names: Ge
     given-names: Xinmu
-    affiliation: "Shanghai Jiao Tong University; Shanghai Innovation Institute"
+    affiliation: "Shanghai Innovation Institute; Shanghai Jiao Tong University"
 repository-code: "https://github.com/Geraldxm/math-vault"
 url: "https://github.com/Geraldxm/math-vault"
 version: "v0.1.0"

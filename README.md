@@ -23,6 +23,7 @@ Zenodo `v0.1.0` 冻结版包含 15 个 evaluation subsets、32,226 条 parser-va
 | CMIMC 2025 | `source/cmimc_2025/train.jsonl` | 40 | CC BY-NC-SA 4.0 |
 | GSM8K | `source/gsm8k/{train,test}.jsonl` | 7,473 / 1,319 | MIT |
 | HMMT February 2025 | `source/hmmt_feb_2025/train.jsonl` | 30 | CC BY-NC-SA 4.0 |
+| Hendrycks MATH | `source/hendrycks_math/{train,test}.jsonl` | 7,500 / 5,000 | MIT |
 | MATH-500 | `source/math_500/test.jsonl` | 500 | 未声明 |
 | Minerva-Math | `source/minerva_math/train.jsonl` | 272 | 未声明 |
 | Omni-MATH | `source/omni_math/train.jsonl` | 4,428 | Apache-2.0 |
@@ -31,7 +32,9 @@ Zenodo `v0.1.0` 冻结版包含 15 个 evaluation subsets、32,226 条 parser-va
 | math-eval canonical | `canonical/` | 32,226 | 继承各父数据 |
 | DAPO-Math-17K compact | `derived/dapo_math_17k_compact/train.jsonl` | 17,917 | Apache-2.0 |
 | DAPO-Math-17K dedup | `derived/dapo_math_17k_dedup/train.jsonl` | 17,176 | Apache-2.0 |
+| Hendrycks MATH normalized | `derived/hendrycks_math/{train,test}.jsonl` | 7,500 / 5,000 | MIT |
 | OPD DAPO-Math-17K dedup | `repo/opd_dapo_math_17k_dedup/train.parquet` | 17,176 | Apache-2.0 |
+| EOPD Hendrycks MATH | `repo/eopd_hendrycks_math/train.parquet` | 7,500 | MIT |
 
 每个数据目录的 README 记录该对象的完整 provenance。"未声明" 表示上游未给出许可证，不代表公有领域。
 

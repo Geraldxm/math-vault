@@ -33,8 +33,8 @@ Zenodo `v0.1.0` 冻结版包含 15 个 evaluation subsets、32,226 条 parser-va
 | DAPO-Math-17K compact | `derived/dapo_math_17k_compact/train.jsonl` | 17,917 | Apache-2.0 |
 | DAPO-Math-17K dedup | `derived/dapo_math_17k_dedup/train.jsonl` | 17,176 | Apache-2.0 |
 | Hendrycks MATH normalized | `derived/hendrycks_math/{train,test}.jsonl` | 7,500 / 5,000 | MIT |
+| Hendrycks MATH EOPD JSON | `derived/hendrycks_math/eopd_train.json` | 7,500 | MIT |
 | OPD DAPO-Math-17K dedup | `repo/opd_dapo_math_17k_dedup/train.parquet` | 17,176 | Apache-2.0 |
-| EOPD Hendrycks MATH | `repo/eopd_hendrycks_math/train.parquet` | 7,500 | MIT |
 
 每个数据目录的 README 记录该对象的完整 provenance。"未声明" 表示上游未给出许可证，不代表公有领域。
 

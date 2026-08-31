@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A traceable, reproducible snapshot of public mathematical reasoning datasets.">
+  <meta name="citation_title" content="math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets">
+  <meta name="citation_author" content="Ge, Xinmu">
+  <meta name="citation_publication_date" content="2026/08/31">
+  <meta name="citation_pdf_url" content="https://geraldxm.github.io/math-vault/math-vault-v0.1.0.pdf">
+  <title>math-vault</title>
+  <style>
+    :root { color-scheme: light; --ink: #18212f; --muted: #586576; --line: #d9e0e8; --accent: #145a86; --paper: #fff; --wash: #f4f7fa; }
+    * { box-sizing: border-box; } body { margin: 0; color: var(--ink); background: var(--wash); font: 17px/1.65 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width: 920px; margin: 0 auto; padding: 52px 28px 72px; } article { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: clamp(26px, 6vw, 62px); box-shadow: 0 12px 34px #18212f0b; }
+    .kicker { margin: 0 0 11px; color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; } h1 { max-width: 780px; margin: 0; font: 700 clamp(2rem, 5vw, 3.4rem)/1.13 Georgia, "Times New Roman", serif; letter-spacing: -.025em; }
+    .byline { margin: 22px 0 0; color: var(--muted); } .byline a, a { color: var(--accent); } .links { display: flex; flex-wrap: wrap; gap: 10px; margin: 28px 0 36px; } .links a { border: 1px solid #9cb6c7; border-radius: 999px; padding: 7px 13px; text-decoration: none; font-size: .92rem; font-weight: 650; } .links a:hover { background: #e8f2f8; }
+    h2 { margin: 42px 0 9px; font: 700 1.35rem/1.25 Georgia, "Times New Roman", serif; } p { margin: 9px 0; } .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 28px 0; border: 1px solid var(--line); background: var(--line); } .facts div { padding: 17px; background: white; } .facts strong { display: block; font-size: 1.48rem; line-height: 1.1; } .facts span { color: var(--muted); font-size: .87rem; }
+    ul { padding-left: 1.25em; } code { padding: .1em .32em; border-radius: 4px; background: #f0f3f6; font-size: .9em; } footer { margin-top: 42px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; } @media (max-width: 560px) { main { padding: 14px; } article { border-radius: 8px; } .facts { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main><article>
+    <p class="kicker">Independent dataset documentation report · 31 August 2026</p>
+    <h1>math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets</h1>
+    <p class="byline">Xinmu Ge · Shanghai Innovation Institute · Shanghai Jiao Tong University · <a href="mailto:g3ra1d@sjtu.edu.cn">g3ra1d@sjtu.edu.cn</a></p>
+    <nav class="links" aria-label="Artifact links"><a href="https://geraldxm.github.io/math-vault/math-vault-v0.1.0.pdf">Read the PDF report</a><a href="https://doi.org/10.5281/zenodo.21411214">Version DOI</a><a href="https://github.com/Geraldxm/math-vault">GitHub repository</a><a href="https://huggingface.co/datasets/Geraldxm/math-vault">Hugging Face dataset</a></nav>
+    <p>This technical report documents the frozen math-vault v0.1.0 dataset artifact. The artifact is a traceable snapshot of public mathematical-reasoning data: it preserves source and derived artifacts, then deterministically materializes a canonical JSONL interface for evaluation: <code>id</code>, <code>problem</code>, and <code>answer</code>. Per-file provenance and recorded SHA256 values make the snapshot inspectable.</p>
+    <section class="facts" aria-label="Release facts"><div><strong>15</strong><span>evaluation subsets</span></div><div><strong>32,226</strong><span>parser-valid evaluation rows</span></div><div><strong>19</strong><span>isolated Omni-MATH audit issues</span></div></section>
+    <h2>What is released</h2>
+    <p>The frozen v0.1.0 dataset artifact distinguishes three layers. <code>source/</code> preserves upstream snapshots; <code>derived/</code> records transformations such as filtering or deduplication; and <code>canonical/</code> is the evaluation-facing representation. The canonical manifest records parent paths and SHA256 hashes for parents and outputs.</p>
+    <h2>Evaluation interface and audits</h2>
+    <p>The canonical rows retain optional solution, source, and metadata fields for audit while requiring stable IDs and non-empty problem/answer fields for evaluation. Nineteen Omni-MATH rows that the current parser cannot reliably process are retained separately in <code>canonical/omni_math/issues.jsonl</code>; they are not silently modified or included in the evaluation count.</p>
+    <h2>Reproducibility and use</h2>
+    <p>The canonical and DAPO dedup data-materialization scripts use only the Python standard library. The DAPO dedup script checks expected source and output row counts and identifier uniqueness. The canonical build checks row counts and canonical identifier uniqueness, then records parent and output SHA256 hashes in its manifest. The canonical interface is designed for <a href="https://github.com/Geraldxm/math-eval">math-eval</a>. The OPD study, <a href="https://arxiv.org/abs/2608.11829">Towards Understanding On-Policy Distillation through the Lens of Test-Time Scaling</a>, documents one use case; it is not an endorsement by the upstream dataset authors.</p>
+    <h2>Licensing</h2>
+    <p>Code and documentation are released under the MIT License. Data remains subject to the licenses and terms recorded for its respective upstream source; the repository’s MIT License does not relicense those data.</p>
+    <h2>Citation</h2>
+    <p><strong>Dataset documentation report:</strong> Xinmu Ge. <em>math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets</em>. Independent dataset documentation report, 2026-08-31.</p>
+    <p><strong>Dataset artifact:</strong> cite v0.1.0 using its related dataset DOI, <a href="https://doi.org/10.5281/zenodo.21411214">10.5281/zenodo.21411214</a>.</p>
+    <footer>Report date: 2026-08-31 · Related dataset artifact: v0.1.0, DOI 10.5281/zenodo.21411214.</footer>
+  </article></main>
+</body>
+</html>

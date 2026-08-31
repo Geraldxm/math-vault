@@ -1,9 +1,11 @@
 # math-vault
 
 [![Code and docs: MIT](https://img.shields.io/badge/code%20%26%20docs-MIT-green)](LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21411213.svg)](https://doi.org/10.5281/zenodo.21411213)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21411214.svg)](https://doi.org/10.5281/zenodo.21411214)
 
 Curated, traceable snapshots of public mathematical reasoning datasets. All datasets normalized to `id/problem/answer` canonical JSONL with per-source provenance records. Designed to feed [math-eval](https://github.com/Geraldxm/math-eval) directly.
+
+Technical report: [HTML landing page](https://geraldxm.github.io/math-vault/) · [PDF](https://geraldxm.github.io/math-vault/math-vault-v0.1.0.pdf)
 
 这是一个持续维护、可扩展的数据仓库：下表描述当前快照；后续版本可以继续纳入新的数学数据集，并沿用同一套 provenance、canonical schema 和 parser audit 流程。
 

@@ -5,7 +5,7 @@
 
 Curated, traceable snapshots of public mathematical reasoning datasets. All datasets normalized to `id/problem/answer` canonical JSONL with per-source provenance records. Designed to feed [math-eval](https://github.com/Geraldxm/math-eval) directly.
 
-Technical report: [HTML landing page](https://geraldxm.github.io/math-vault/) · [PDF](https://geraldxm.github.io/math-vault/math-vault-v0.1.0.pdf)
+Technical report: [HTML landing page](https://geraldxm.github.io/math-vault/) · [PDF](https://geraldxm.github.io/math-vault/math-vault-v0.1.0.pdf) · [DOI](https://doi.org/10.5281/zenodo.23030543)
 
 这是一个持续维护、可扩展的数据仓库：下表描述当前快照；后续版本可以继续纳入新的数学数据集，并沿用同一套 provenance、canonical schema 和 parser audit 流程。
 
@@ -66,6 +66,20 @@ python canonical/build.py
 均只依赖 Python 标准库。
 
 ## 引用
+
+技术报告（数据范围、provenance 或 parser audit）引用：
+
+```bibtex
+@techreport{ge_math_vault_report_2026,
+  author = {Ge, Xinmu},
+  title  = {math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets},
+  year   = {2026},
+  doi    = {10.5281/zenodo.23030543},
+  url    = {https://doi.org/10.5281/zenodo.23030543}
+}
+```
+
+数据 artifact（固定数据版本）引用：
 
 ```bibtex
 @dataset{ge_math_vault_2026,

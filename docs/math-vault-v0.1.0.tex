@@ -1,0 +1,130 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=2.35cm,top=2.15cm,bottom=2.2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\hypersetup{
+  pdftitle={math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets},
+  pdfauthor={Xinmu Ge},
+  pdfsubject={Technical report for the math-vault dataset release},
+  pdfkeywords={mathematical reasoning, datasets, provenance, reproducibility},
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black
+}
+
+\definecolor{reportblue}{HTML}{174F7A}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.25em}
+\setcounter{secnumdepth}{2}
+\renewcommand{\arraystretch}{1.15}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\fancyfoot[L]{\footnotesize math-vault technical report}
+\fancyfoot[R]{\footnotesize \thepage}
+\pagestyle{fancy}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[L]{\footnotesize math-vault technical report}\fancyfoot[R]{\footnotesize \thepage}}
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{\z@}{1.25ex plus .4ex minus .2ex}{.55ex plus .15ex}{\normalfont\large\bfseries\color{reportblue}}}
+\makeatother
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}p{0.20\linewidth}}
+
+\title{\textbf{math-vault: Curated, Traceable Snapshots\\of Public Mathematical Reasoning Datasets}}
+\author{Xinmu Ge\\[2pt]
+\normalsize Shanghai Innovation Institute\\
+\normalsize Shanghai Jiao Tong University\\
+\normalsize \texttt{g3ra1d@sjtu.edu.cn}}
+\date{31 August 2026}
+
+\begin{document}
+\maketitle
+\begin{center}
+\small\textsc{Technical Report \;|\; Dataset Release v0.1.0}
+\end{center}
+\vspace{-0.5em}
+
+\begin{abstract}
+\noindent math-vault is a versioned snapshot of public mathematical-reasoning datasets assembled for traceable evaluation. The v0.1.0 release contains 15 evaluation subsets and 32,226 parser-valid rows in canonical JSONL with required \texttt{id}, \texttt{problem}, and \texttt{answer} fields. It distinguishes source, derived, and canonical layers rather than treating all copies as equivalent. Per-file parent pointers and recorded SHA256 hashes make materialization auditable. Nineteen Omni-MATH rows that the current parser cannot reliably process are preserved as isolated audit issues and excluded from the evaluation count. The canonical and DAPO-dedup materialization scripts use only the Python standard library. Code and documentation are MIT-licensed; every dataset retains its upstream licensing terms.
+\end{abstract}
+
+\section{Purpose and scope}
+Mathematical-reasoning evaluation often combines public datasets whose fields, provenance, and answer conventions differ. math-vault provides a frozen release that makes those distinctions explicit. It does not claim ownership of upstream data or collapse their licenses into a single data license. Instead, it records snapshots and transformations and supplies a common evaluation-facing representation for tools that need stable identifiers and gold answers.
+
+The release is designed to feed math-eval~\cite{matheval} directly. This is an interface relationship: math-vault supplies evaluation rows and provenance, while math-eval supplies generation and evaluation machinery. The OPD study~\cite{opd} documents one downstream use case; it is not an endorsement by an upstream dataset author.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{}ccc@{}}
+\toprule
+\textbf{15} & \textbf{32,226} & \textbf{19} \\
+evaluation subsets & parser-valid rows & isolated audit issues \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\Needspace{8\baselineskip}
+\section{Release structure}
+The frozen v0.1.0 release distinguishes three layers. \texttt{source/} contains upstream artifact snapshots and permits only serialization changes that preserve rows, fields, ordering, and content. \texttt{derived/} holds transformations such as filtering, deduplication, prompt removal, or sampling, together with their parents and reconstruction rules. \texttt{canonical/} mechanically materializes data usable by math-eval.
+
+Every canonical evaluation row has a nonempty unique string identifier, a problem, and an answer. Optional solution, source, and metadata fields are retained when needed for audit. \texttt{canonical/manifest.json} records the source name, parent path, recorded parent SHA256, recorded output SHA256, and row count for each materialized file.
+
+\begin{table}[!ht]
+\centering
+\small
+\caption{Compact grouping of the 15 canonical subsets. The manifest is the authoritative per-file accounting.}
+\label{tab:subsets}
+\begin{tabularx}{\linewidth}{@{}Y R@{}}
+\toprule
+\textbf{Subset family} & \textbf{Evaluation rows} \\
+\midrule
+AIME, AMC, AIMO, BrUMO, CMIMC, HMMT & 403 \\
+GSM8K & 8,792 \\
+DAPO-Math-17K dedup & 17,176 \\
+MATH-500, Minerva-Math & 772 \\
+Omni-MATH, OlympiadBench & 5,083 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\Needspace{7\baselineskip}
+\section{Parser audit boundary}
+The Omni-MATH source snapshot has 4,428 rows, of which 4,409 are materialized as evaluation rows. Nineteen records are retained without alteration in \path{canonical/omni_math/issues.jsonl} because the current parser cannot reliably process their answers. The recorded categories are nine empty answers, six malformed LaTeX answers, one truncated answer, one unsupported piecewise-text answer, one verification error, and one row with multiple boxed answers. Keeping these rows separate makes the exclusion reviewable rather than silently repairing or discarding source data.
+
+In the recorded 2026-07-16 audit baseline, all 32,226 included canonical answers passed math-eval's \texttt{math-v5-dual} boxed strict/soft check consistently. This is a compatibility check for a named parser configuration, not a claim that every upstream answer is universally unambiguous.
+
+\section{Deterministic materialization}
+The canonical and DAPO-dedup materialization scripts rely only on the Python standard library. The DAPO-dedup script checks expected source and output row counts and identifier uniqueness. The canonical build checks row counts and canonical identifier uniqueness, then records parent and output SHA256 hashes in its manifest. Users can compare that manifest with materialized files and their parents without relying on a hidden service or a third-party build framework.
+
+Consumers can cite the versioned dataset artifact, inspect the relevant \texttt{source/} or \texttt{derived/} README, and load canonical JSONL into math-eval or another evaluator that understands the same fields. They remain responsible for honoring the upstream terms attached to each dataset.
+
+\section{Licensing, provenance, and citation}
+Code and documentation in math-vault are released under the MIT License. The datasets are not relicensed: data remains subject to the license or terms documented for each upstream artifact, and an upstream absence of an explicit license is recorded as such rather than interpreted as public-domain permission. A uniform technical interface does not erase provenance or rights information.
+
+\noindent\textbf{Source code.} \url{https://github.com/Geraldxm/math-vault}\\
+\textbf{Technical report DOI.} \url{https://doi.org/10.5281/zenodo.23030543}\\
+\textbf{Related dataset DOI.} \url{https://doi.org/10.5281/zenodo.21411214}
+
+\noindent\textbf{Recommended citation for this technical report.} Ge, X. (2026). \emph{math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets}. Technical report. Zenodo. \url{https://doi.org/10.5281/zenodo.23030543}.
+
+\noindent\textbf{Recommended citation for the dataset artifact.} Ge, X. (2026). \emph{math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets} (Version v0.1.0). Zenodo. \url{https://doi.org/10.5281/zenodo.21411214}.
+
+\begin{thebibliography}{9}
+\bibitem{matheval}
+X. Ge. \emph{math-eval: Reproducible Mathematical Reasoning Generation and Evaluation}. Software v0.1.0, 2026. Zenodo. \url{https://doi.org/10.5281/zenodo.21411208}.
+
+\bibitem{opd}
+X. Ge et al. \emph{Towards Understanding On-Policy Distillation through the Lens of Test-Time Scaling}. arXiv:2608.11829, 2026. \url{https://arxiv.org/abs/2608.11829}.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,51 @@
+{
+  "draft_only": true,
+  "resource_type": "Publication → Technical note",
+  "title": "math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets",
+  "publication_date": "2026-08-31",
+  "creators": [
+    {
+      "family_name": "Ge",
+      "given_name": "Xinmu",
+      "affiliations": [
+        "Shanghai Innovation Institute",
+        "Shanghai Jiao Tong University"
+      ],
+      "orcid": null
+    }
+  ],
+  "description": "math-vault is a versioned snapshot of public mathematical-reasoning datasets assembled for traceable evaluation. The v0.1.0 dataset release contains 15 evaluation subsets and 32,226 parser-valid rows in a canonical JSONL interface with required id, problem, and answer fields. It maintains source, derived, and canonical layers rather than treating all copies as equivalent. Per-file parent pointers and recorded SHA256 hashes make materialization auditable. Nineteen Omni-MATH rows that the current parser cannot reliably process remain preserved as isolated audit issues and are excluded from the evaluation count. The canonical and DAPO dedup data-materialization scripts use only the Python standard library. Code and documentation are MIT-licensed; each dataset retains its upstream licensing terms.",
+  "keywords": [
+    "mathematical reasoning",
+    "datasets",
+    "benchmarking",
+    "data provenance",
+    "reproducibility"
+  ],
+  "license": "MIT",
+  "upload_file": {
+    "path": "docs/math-vault-v0.1.0.pdf",
+    "sha256": "aed4d3935d339c3dca1b9b57515e0af7d774109aebf1436beaf0dbd02ee42aba"
+  },
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.21411214",
+      "scheme": "DOI",
+      "relation": "Documents",
+      "resource_type": "Dataset",
+      "label": "Versioned dataset artifact"
+    },
+    {
+      "identifier": "https://github.com/Geraldxm/math-vault/tree/v0.1.0",
+      "scheme": "URL",
+      "relation": "IsSupplementTo",
+      "resource_type": "Software",
+      "label": "Source code and data-provenance records"
+    }
+  ],
+  "publish_checklist": [
+    "Confirm that this record is a separate publication record, not a new version of the dataset record.",
+    "Confirm the displayed citation and related identifiers.",
+    "Obtain author review before selecting Publish."
+  ]
+}

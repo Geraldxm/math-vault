@@ -1,7 +1,7 @@
 # math-vault
 
 [![Code and docs: MIT](https://img.shields.io/badge/code%20%26%20docs-MIT-green)](LICENSE)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21411214.svg)](https://doi.org/10.5281/zenodo.21411214)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23030543.svg)](https://doi.org/10.5281/zenodo.23030543)
 
 Curated, traceable snapshots of public mathematical reasoning datasets. All datasets normalized to `id/problem/answer` canonical JSONL with per-source provenance records. Designed to feed [math-eval](https://github.com/Geraldxm/math-eval) directly.
 
@@ -67,28 +67,17 @@ python canonical/build.py
 
 ## 引用
 
-技术报告（数据范围、provenance 或 parser audit）引用：
+请引用技术报告：
 
 ```bibtex
 @techreport{ge_math_vault_report_2026,
-  author = {Ge, Xinmu},
-  title  = {math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets},
-  year   = {2026},
-  doi    = {10.5281/zenodo.23030543},
-  url    = {https://doi.org/10.5281/zenodo.23030543}
-}
-```
-
-数据 artifact（固定数据版本）引用：
-
-```bibtex
-@dataset{ge_math_vault_2026,
-  author  = {Ge, Xinmu},
-  title   = {math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets},
-  year    = {2026},
-  version = {v0.1.0},
-  doi     = {10.5281/zenodo.21411214},
-  url     = {https://doi.org/10.5281/zenodo.21411214}
+  author      = {Ge, Xinmu},
+  title       = {math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets},
+  institution = {Shanghai Innovation Institute},
+  number      = {math-vault-v0.1.0},
+  year        = {2026},
+  doi         = {10.5281/zenodo.23030543},
+  url         = {https://doi.org/10.5281/zenodo.23030543}
 }
 ```
 

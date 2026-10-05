@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this dataset, please cite it using the metadata below."
+message: "Please cite the technical report below."
 title: "math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets"
 type: dataset
 authors:
@@ -9,6 +9,15 @@ authors:
     email: "g3ra1d@sjtu.edu.cn"
 repository-code: "https://github.com/Geraldxm/math-vault"
 url: "https://github.com/Geraldxm/math-vault"
-version: "v0.1.0"
-date-released: 2026-07-17
-doi: 10.5281/zenodo.21411214
+preferred-citation:
+  type: report
+  authors:
+    - family-names: Ge
+      given-names: Xinmu
+  title: "math-vault: Curated, Traceable Snapshots of Public Mathematical Reasoning Datasets"
+  institution:
+    name: "Shanghai Innovation Institute"
+  version: "math-vault-v0.1.0"
+  year: 2026
+  doi: "10.5281/zenodo.23030543"
+  url: "https://doi.org/10.5281/zenodo.23030543"
